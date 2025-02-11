@@ -11,3 +11,13 @@ jobs:
         - name: deploy
           run: |
             echo "Deploying to production"
+            echo "Deployment complete"
+        - name: Update deployment status
+          uses: chrnorm/deployment-status@v2
+          with:
+              token: ${{ secrets.GITHUB_TOKEN }}
+              environment: production
+              state: success  # Replace with 'failure' if deployment fails
+              description: "Deployment successful"
+              environment_url: "https://github.com/siliconraptor/test-github-app"
+      
